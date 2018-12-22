@@ -10,6 +10,17 @@
   </head>
 
   <body>
+      <% if current_user.present? %>
+          <% if current_user.admin? %>
+              <%= link_to 'Index', admin_users_path %>
+          <% end %>
+          <%= link_to 'Account', my_account_path %>
+          <%= link_to 'Logout', session_path, method: :delete %>
+      <% else %>
+          <%= link_to 'Login', new_session_path %>
+      <% end %>
+      <hr/>
+    <%= notice %>
     <%= yield %>
   </body>
 </html>
