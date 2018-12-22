@@ -25,8 +25,8 @@ class Admin::UsersController < ApplicationController
     end
 
     def update
-        if @user.update
-            redirect_to admin_user(@user)
+        if @user.update(user_params)
+            redirect_to admin_user_path(@user)
         else
             redirect_to edit_admin_user_path(@user)
         end

@@ -1,0 +1,16 @@
+<h1><%=@user.name%>'s Profile</h1>
+
+<h5>Email</h5>
+<p><%= @user.email %></p>
+
+<h5>Password</h5>
+<p><%= @user.password %></p>
+
+<h5>Admin?</h5>
+<p><%= @user.admin %></p>
+
+<td><%= link_to "Back to index", admin_users_path %></td>
+<br/>
+<td><%= link_to "Edit #{ @user.name }'s profile", edit_admin_user_path(@user) %></td>
+<br/>
+<td><%= link_to "Delete #{ @user.name }'s profile", admin_user_path(@user), method: :delete, data: { confirm: 'Are you sure?'} %></t
