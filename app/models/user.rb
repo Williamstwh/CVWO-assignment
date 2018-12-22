@@ -10,7 +10,4 @@ class User < ApplicationRecord
 
     #Password must be present
     validates :password, presence: true
-
-    #admin must be present
-    validates :admin, presence: true
 end
