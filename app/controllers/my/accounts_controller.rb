@@ -10,7 +10,6 @@ class My::AccountsController < ApplicationController
 
     def update
         if @account.update
-            @current_user = @account
             redirect_to my_account_path
         else
             render edit_my_account_path

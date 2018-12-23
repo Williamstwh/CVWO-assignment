@@ -1,6 +1,6 @@
 class My::TodosController < ApplicationController
     before_action :find_todo, only: [:show, :edit, :update, :destroy]
-    
+
     def index
         @todos = current_user.todos.all
     end
@@ -31,5 +31,6 @@ class My::TodosController < ApplicationController
     end
 
     def todo_params
+        params.require('todo').permit(:title, :text, :datetime)
     end
 end
