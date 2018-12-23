@@ -12,3 +12,21 @@
  *
  */
  @import "bootstrap";
+
+body {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+}
+
+ #navibar {
+     flex: 1;
+     background-color: #199;
+     height: 50px;
+     justify-content: 'center';
+ }
+
+ #navibar a {
+     font-size: 20px;
+     color: white;
+ }

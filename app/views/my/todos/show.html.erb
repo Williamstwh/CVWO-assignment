@@ -1,0 +1,8 @@
+<h1><%= @todo.title %></h1>
+
+<p><%= @todo.description %></p>
+<p><%= @todo.due.to_formatted_s(:long_ordinal) %></p>
+
+<%= link_to 'Back to index', my_todos_path %>
+<%= link_to 'Edit', edit_my_todo_path(@todo) %>
+<%= link_to 'Delete', my_todo_path(@todo), method: :delete, data: { confirm: 'Are you sure?'} %>

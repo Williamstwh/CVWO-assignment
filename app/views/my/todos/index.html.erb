@@ -1,0 +1,29 @@
+<h1>Your Todo list</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Deadline</th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <% @todos.each do |todoitem| %>
+            <tr>
+                <td><%= todoitem.title %></td>
+                <td><%= todoitem.description %></td>
+                <td><%= todoitem.due.to_formatted_s(:long_ordinal) %></td>
+                <td><%= link_to 'Show', my_todo_path(todoitem) %></td>
+                <td><%= link_to 'Edit', edit_my_todo_path(todoitem) %></td>
+                <td><%= link_to 'Delete', my_todo_path(todoitem), method: :delete, data: { confirm: 'Are you sure?'} %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+
+<%= link_to 'New Todo item', new_my_todo_path %>

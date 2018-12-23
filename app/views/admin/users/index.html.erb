@@ -1,31 +1,39 @@
 <h1>List of all users</h1>
 
-<table>
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Password</th>
-            <th>Admin?</th>
-            <th>
-            <th>
-            <th>
-        </tr>
-    </thead>
-
-    <tbody>
-        <% @users.each do |user| %>
+<div style="align-content: center;">
+    <table>
+        <thead>
             <tr>
-                <td><%= user.name %></td>
-                <td><%= user.email %></td>
-                <td><%= user.password %></td>
-                <td><%= user.admin %></td>
-                <td><%= link_to 'Show', admin_user_path(user) %></td>
-                <td><%= link_to 'Edit', edit_admin_user_path(user) %></td>
-                <td><%= link_to 'Delete', admin_user_path(user), method: :delete, data: { confirm: 'Are you sure?'} %></td>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Password</th>
+                <th>Admin?</th>
+                <th></th>
+                <th></th>
+                <th></th>
             </tr>
-        <% end %>
-    </tbody>
-</table>
+        </thead>
 
-<%= link_to "Create new user", new_admin_user_path %>
+        <tbody>
+            <% @users.each do |user| %>
+                <tr>
+                    <td><%= user.name %></td>
+                    <td><%= user.email %></td>
+                    <td><%= user.password %></td>
+                    <td><%= user.admin %></td>
+                    <% if current_user.email == user.email %>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    <% else %>
+                        <td><%= link_to 'Show', admin_user_path(user) %></td>
+                        <td><%= link_to 'Edit', edit_admin_user_path(user) %></td>
+                        <td><%= link_to 'Delete', admin_user_path(user), method: :delete, data: { confirm: 'Are you sure?'} %></td>
+                    <% end %>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+</div>
+
+<button><%= link_to "Create new user", new_admin_user_path %></button>
