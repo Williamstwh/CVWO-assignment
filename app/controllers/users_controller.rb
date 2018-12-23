@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
     def new
+        redirect_to my_account_path unless session[:current_user_id] == nil
         @user = User.new
     end
 
