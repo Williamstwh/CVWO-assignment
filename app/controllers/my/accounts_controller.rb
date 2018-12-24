@@ -1,6 +1,6 @@
 class My::AccountsController < ApplicationController
     before_action :authenticate_user!
-    before_action :prepare_account, only: [:show, :update, :edit, :delete]
+    before_action :prepare_account, only: [:show, :edit, :update, :delete]
 
     def show
     end
@@ -9,10 +9,10 @@ class My::AccountsController < ApplicationController
     end
 
     def update
-        if @account.update
+        if @account.update(account_params)
             redirect_to my_account_path
         else
-            render edit_my_account_path
+            redirect_to edit_my_account_path
         end
     end
 
@@ -25,6 +25,6 @@ class My::AccountsController < ApplicationController
     end
 
     def account_params
-        params.require(:user).permit(:name, :email, :password, :admin)
+        params.require(:account).permit(:name, :email, :password, :admin)
     end
 end
