@@ -1,5 +1,20 @@
 <h1>Your Todo list</h1>
 
+<%= form_with( url: my_todos_path, method: :get) do |form| %>
+
+    <table>
+        <thead>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="border-color: #ffffff00"><%= form.text_field :search %></td>
+                <td style="border-color: #ffffff00"><%= form.select :category, ['Title', 'Description', 'Deadline'] %></td>
+                <td style="border-color: #ffffff00"><%= form.submit "search" %></td>
+            </tr>
+        </tbody>
+    </table>
+<% end %>
+
 <table>
     <thead>
         <tr>

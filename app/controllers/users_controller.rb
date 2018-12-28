@@ -6,6 +6,7 @@ class UsersController < ApplicationController
 
     def create
         @user = User.new(params.require(:user).permit(:name, :email, :password, :admin))
+        @user.email.downcase!
         if @user.save
             session[:current_user_id] = @user.id
             redirect_to my_account_path
