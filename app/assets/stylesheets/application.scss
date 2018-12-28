@@ -30,3 +30,27 @@ body {
      font-size: 20px;
      color: white;
  }
+
+ table {
+     margin: auto;
+     text-align: center;
+     column-gap: 5px;
+ }
+
+tbody {
+    border-color: lightGray;
+    border-width: 1px;
+    border-bottom-style: solid;
+}
+
+ th {
+     background-color: #199
+ }
+
+td {
+    border-color: lightGray;
+    border-width: 1px;
+    border-left-style: solid;
+    border-right-style: solid;
+    min-width: 100px;
+}
