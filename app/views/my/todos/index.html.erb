@@ -1,33 +1,36 @@
 <h1>Your Todo list</h1>
 
-<%= form_with( url: my_todos_path, method: :get, local: true) do |form| %>
+<div class="searchdiv">
+    <%= form_with( url: my_todos_path, method: :get, local: true) do |form| %>
 
-    <table class="searchbar">
-        <thead>
-        </thead>
-        <tbody class="searchbar">
-            <tr class="searchbar">
-                <td><h6>include search</h6> <%= form.check_box :include_search %></td>
-                <td colspan="3"> <%= form.text_field :search %> </td>
-            </tr>
-            <tr>
-                <td><h6>include date range</h6><%= form.check_box :include_datetime %></td>
-                <td><h6>FROM: </h6></td>
-                <td class="searchbar"><%= form.datetime_select :datetime_from %></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td><h6>TO: </h6></td>
-                <td class="searchbar"><%= form.datetime_select :datetime_to %></td>
-                <td class="searchbar"><%= form.submit "search" %> </td>
-            <tr>
-        </tbody>
-    </table>
-    <% console %>
-<% end %>
+        <table class="searchbox">
+            <thead>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><h6>include title</h6> <%= form.check_box :include_search %></td>
+                    <td id="searchbar"colspan="3"> <%= form.text_field :search, placeholder: "title search" %> </td>
+                </tr>
+                <tr>
+                    <td><h6>include date range</h6><%= form.check_box :include_datetime %></td>
+                    <td><h6>FROM: </h6></td>
+                    <td><%= form.datetime_select :datetime_from %></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><h6>TO: </h6></td>
+                    <td><%= form.datetime_select :datetime_to %></td>
+                    <td><%= form.submit "search" %> </td>
+                <tr>
+            </tbody>
+        </table>
+        <% console %>
+    <% end %>
+</div>
+<br/>
 
-<table>
+<table class="contentTable">
     <thead>
         <tr>
             <th>Title</th>
