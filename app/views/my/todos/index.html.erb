@@ -7,15 +7,21 @@
         </thead>
         <tbody class="searchbar">
             <tr class="searchbar">
-                <td></td>
-                <td class="searchbar"><%= form.text_field :search, placeholder: "Search by title" %></td>
-                <td class-"searchbar"><%= form.submit "search" %></td>
+                <td><h6>include search</h6> <%= form.check_box :include_search %></td>
+                <td colspan="3"> <%= form.text_field :search %> </td>
             </tr>
             <tr>
-                <td class="searchbar"><%= form.check_box :includeRange %></td>
-                <td class="searchbar"><%= form.datetime_select :startRange %></td>
-                <td class="searchbar"><%= form.datetime_select :endRange %></td>
+                <td><h6>include date range</h6><%= form.check_box :include_datetime %></td>
+                <td><h6>FROM: </h6></td>
+                <td class="searchbar"><%= form.datetime_select :datetime_from %></td>
+                <td></td>
             </tr>
+            <tr>
+                <td></td>
+                <td><h6>TO: </h6></td>
+                <td class="searchbar"><%= form.datetime_select :datetime_to %></td>
+                <td class="searchbar"><%= form.submit "search" %> </td>
+            <tr>
         </tbody>
     </table>
     <% console %>

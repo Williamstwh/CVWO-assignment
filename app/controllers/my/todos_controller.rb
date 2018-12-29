@@ -2,14 +2,10 @@ class My::TodosController < ApplicationController
     before_action :find_todo, only: [:show, :edit, :update, :destroy]
 
     def index
-        @todos = current_user.todos.where("title LIKE ?", params[:search])
-        if params[:includeRange]
-            @todos = @todos.select do |todo|
-                todo.due > convert_to_datetime("startRange", params) && todo.due < convert_to_datetime("endRange", params)
-            end
-        elsif @todos.length == 0
-            @todos = current_user.todos.all
+        if params[:search] != nil
+            @todos = TodoSearch.new(params, current_user.id).scope
         else
+            @todos = current_user.todos.all
         end
     end
 
@@ -53,13 +49,5 @@ class My::TodosController < ApplicationController
 
     def todo_params
         params.require('todo').permit(:title, :description, :due)
-    end
-
-    def convert_to_datetime(name, params)
-        params[name + "(1i)"] + "-" +
-        params[name + "(2i)"] + "-" +
-        params[name + "(3i)"] + " " +
-        params[name + "(4i)"] + ":" +
-        params[name + "(5i)"]
     end
 end
