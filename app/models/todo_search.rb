@@ -10,6 +10,8 @@ class TodoSearch
         @search = params[:search]
         @include_search = params[:include_search].to_i == 1
 
+        @sort_by = params[:sort_by]
+
         @user_id = user_id
     end
 
@@ -22,6 +24,16 @@ class TodoSearch
 
         if @include_datetime
             todos = todos.where('due BETWEEN ? AND ?', @datetime_from, @datetime_to)
+        end
+
+        if @sort_by == 'Date - Latest first' || @sort_by == ''
+            todos = (todos.sort_by{ |e| e.due.to_i }).reverse!
+        elsif @sort_by == 'Date - Oldest first'
+            todos = todos.sort_by{ |e| e.due.to_i }
+        elsif @sort_by == 'A - Z'
+            todos = todos.sort_by{ |e| e.title.downcase }
+        elsif @sort_by == 'Z - A'
+            todos = (todos.sort_by{ |e| e.title.downcase }).reverse!
         end
 
         return todos

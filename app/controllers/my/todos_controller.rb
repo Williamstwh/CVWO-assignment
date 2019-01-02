@@ -5,7 +5,7 @@ class My::TodosController < ApplicationController
         if params[:search] != nil
             @todos = TodoSearch.new(params, current_user.id).scope
         else
-            @todos = current_user.todos.all
+            @todos = (current_user.todos.all.sort_by{ |e| e.due.to_i }).reverse!
         end
     end
 

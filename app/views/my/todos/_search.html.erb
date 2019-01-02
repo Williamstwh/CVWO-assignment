@@ -1,0 +1,32 @@
+<div class="searchdiv">
+    <%= form_with( url: my_todos_path, method: :get, local: true) do |form| %>
+
+        <table class="searchbox">
+            <thead>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><h6>Include title</h6> <%= form.check_box :include_search, { checked: true } %></td>
+                    <td id="searchbar"colspan="3"> <%= form.text_field :search, placeholder: "title search" %> </td>
+                </tr>
+                <tr>
+                    <td><h6>Include date range</h6><%= form.check_box :include_datetime %></td>
+                    <td><h6>FROM: </h6></td>
+                    <td><%= form.datetime_select :datetime_from, default: 7.days.ago.localtime %></td>
+                    <td><%= form.select(:sort_by, ['Date - Latest first',
+                                                   'Date - Oldest first',
+                                                   'A - Z',
+                                                   'Z - A'], include_blank: '---sort by---') %></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><h6>TO: </h6></td>
+                    <td><%= form.datetime_select :datetime_to, default: 0.days.ago.localtime %></td>
+                    <td><%= form.submit "search" %> </td>
+                </tr>
+            </tbody>
+        </table>
+    <% end %>
+</div>
+
+<%= console %>
