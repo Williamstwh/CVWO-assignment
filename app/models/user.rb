@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+    #Downcase all emails before saving
+    before_save { |user| user.email = email.downcase }
+
     has_many :todos
 
     #Name must be present

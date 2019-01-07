@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
     def new
         #if there is an existing session, redirect to my/account path, disallowing user from creating new account
         redirect_to my_account_path unless session[:current_user_id] == nil
@@ -8,9 +9,7 @@ class UsersController < ApplicationController
 
     def create
         #create a new user with parameters specfied in form
-        @user = User.new(params.require(:user).permit(:name, :email, :password, :admin))
-        #downcase the email for storing in the database
-        @user.email.downcase!
+        @user = User.new(user_params)
         #if user saves, log the user in automatically by changing the session id to the new user's id.
         if @user.save
             session[:current_user_id] = @user.id
@@ -20,4 +19,9 @@ class UsersController < ApplicationController
             render :new
         end
     end
+
+    private
+
+    def user_params
+        params.require(:user).permit(:name, :email, :password, :admin)
 end
