@@ -26,11 +26,10 @@
                     <td><h6>TO: </h6></td>
                     <%# End of date range selector, default set to local time %>
                     <td><%= form.datetime_select :datetime_to, default: 0.days.ago.localtime %></td>
-                    <td><%= form.submit "search" %> </td>
+                    <%# Disable button after click to prevent sending multiple requests %>
+                    <td><%= form.submit "Search", data: { disable_with: "Searching..."} %> </td>
                 </tr>
             </tbody>
         </table>
     <% end %>
 </div>
-
-<% console %>

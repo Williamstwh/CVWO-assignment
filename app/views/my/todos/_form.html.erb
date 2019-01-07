@@ -28,7 +28,8 @@
     </div>
 
     <div>
-        <%= form.submit %>
+        <%# Disable button after click to prevent sending multiple requests %>
+        <%= form.submit "submit", data: { disable_with: "submitting data..." } %>
     </div>
 
 <% end %>
