@@ -1,3 +1,4 @@
+<%# todo = @todo = Todo.new %>
 <%= form_with(model: [:my, todo], local: true) do |form| %>
     <% if todo.errors.any? %>
       <div id="error_explanation">

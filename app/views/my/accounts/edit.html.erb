@@ -1,6 +1,13 @@
 <h1>Edit my account</h1>
 
-<%= form_with(model: @account, scope: :account, url: my_account_path, as: :account, local: true) do |form| %>
+<%# @account = current_user based on accounts controller%>
+<%# By default, since @account is a user, the fields of form will be passed as "user"=>{"name"=>..., "email"=>..., ...}.
+    To change this to "account"=>{"name"=>..., "email"=>..., ...}, set scope: :account%>
+<%# By default, since @account is a user, if we were to pass in 'model: [:my, @account]', the url will be my_user_path.
+    Thus, we must set the model and url separately, as 'model: @account' and 'url: [:my, :account]' which translates to
+    my_account_path %>
+<%# by default, remote is true, hence  set local to true instead %>
+<%= form_with(model: @account, scope: :account, url: [:my, :account],local: true) do |form| %>
     <% if @account.errors.any? %>
       <div id="error_explanation">
         <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>

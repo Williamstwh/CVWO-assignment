@@ -1,17 +1,19 @@
 <div class="searchdiv">
+    <%# By default, method is post, hence change to method: :get %>
     <%= form_with( url: my_todos_path, method: :get, local: true) do |form| %>
-
         <table class="searchbox">
             <thead>
             </thead>
             <tbody>
                 <tr>
+                    <%# Set default value of checkbox to checked %>
                     <td><h6>Include title</h6> <%= form.check_box :include_search, { checked: true } %></td>
                     <td id="searchbar"colspan="3"> <%= form.text_field :search, placeholder: "title search" %> </td>
                 </tr>
                 <tr>
                     <td><h6>Include date range</h6><%= form.check_box :include_datetime %></td>
                     <td><h6>FROM: </h6></td>
+                    <%# Start of date range selector, default set to 7 days ago from local time %>
                     <td><%= form.datetime_select :datetime_from, default: 7.days.ago.localtime %></td>
                     <td><%= form.select(:sort_by, ['Date - Latest first',
                                                    'Date - Oldest first',
@@ -21,6 +23,7 @@
                 <tr>
                     <td></td>
                     <td><h6>TO: </h6></td>
+                    <%# End of date range selector, default set to local time %>
                     <td><%= form.datetime_select :datetime_to, default: 0.days.ago.localtime %></td>
                     <td><%= form.submit "search" %> </td>
                 </tr>

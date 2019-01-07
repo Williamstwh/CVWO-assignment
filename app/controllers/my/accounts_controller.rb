@@ -9,6 +9,7 @@ class My::AccountsController < ApplicationController
     end
 
     def update
+        #if account updates with params in form, then redirect to my/account, else redirect to edit path
         if @account.update(account_params)
             redirect_to my_account_path
         else
@@ -21,6 +22,7 @@ class My::AccountsController < ApplicationController
 
     private
     def prepare_account
+        #calls the current_user function defined in application_controller and stores it in @account
         @account = current_user
     end
 
