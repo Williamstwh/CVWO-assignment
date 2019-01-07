@@ -2,26 +2,40 @@ class TodoSearch
     #create getter methods for @datetime_from and @datetime_to
     attr_reader :datetime_from, :datetime_to
 
-    def initialize(params, user_id)
-        #params is nil, set it to an empty object as functions below expect an object from params
-        params ||= {}
-        #convert datetime_from to string in database format
-        @datetime_from = stringify_datetime("datetime_from", params)
-        #convert datetime_to to string in database format
-        @datetime_to = stringify_datetime("datetime_to", params)
-        #A boolean which determines whether datetime should be included
-        @include_datetime = params[:include_datetime].to_i == 1
-
-        #contents of search result
-        @search = params[:search]
-        #A boolean which determines whether the search reuslt should be included
-        @include_search = params[:include_search].to_i == 1
-
-        #Option for how the resulting table should be sorted by - alphabetical/due and ascending/descending
-        @sort_by = params[:sort_by]
-
-        #current user id
-        @user_id = user_id
+    def initialize(todosearch_params, user_id)
+        #if the todosearch_params is an empty object, i.e. when my/todos has been accessed
+        if todosearch_params == {}
+            #set to the default search
+            #set datetime_from to be the beginning of time
+            @datetime_from = Time.at(0).to_formatted_s(:db)
+            #set datetime_to to be the current time locally
+            @datetime_to = DateTime.now.localtime
+            #Do not include datetime range
+            @include_datetime = false
+            #set search to be empty string
+            @search = ''
+            #Do not include search
+            @include_search = false
+            #Set the sort_by to '' thus achieving default
+            @sort_by = ''
+            #current user id
+            @user_id = user_id
+        else
+            #convert datetime_from to string in database format
+            @datetime_from = stringify_datetime("datetime_from", todosearch_params)
+            #convert datetime_to to string in database format
+            @datetime_to = stringify_datetime("datetime_to", todosearch_params)
+            #A boolean which determines whether datetime should be included
+            @include_datetime = todosearch_params[:include_datetime].to_i == 1
+            #contents of search result
+            @search = todosearch_params[:search]
+            #A boolean which determines whether the search reuslt should be included
+            @include_search = todosearch_params[:include_search].to_i == 1
+            #Option for how the resulting table should be sorted by - alphabetical/due and ascending/descending
+            @sort_by = todosearch_params[:sort_by]
+            #current user id
+            @user_id = user_id
+        end
     end
 
     def scope

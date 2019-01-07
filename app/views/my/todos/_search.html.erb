@@ -1,6 +1,7 @@
 <div class="searchdiv">
+    <%# Store the inputs of form in params[:todosearch] %>
     <%# By default, method is post, hence change to method: :get %>
-    <%= form_with( url: my_todos_path, method: :get, local: true) do |form| %>
+    <%= form_with( url: my_todos_path, scope: :todosearch, method: :get, local: true) do |form| %>
         <table class="searchbox">
             <thead>
             </thead>
@@ -31,3 +32,5 @@
         </table>
     <% end %>
 </div>
+
+<% console %>
