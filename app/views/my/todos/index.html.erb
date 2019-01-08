@@ -2,7 +2,11 @@
 
 <%= render 'search' %>
 
-<br/>
+<hr/>
+
+<%= render 'miniform' %>
+
+<hr/>
 
 <table class="contentTable">
     <thead>
@@ -24,12 +28,12 @@
                 <td><%= todoitem.due.to_formatted_s(:long_ordinal) %></td>
                 <td><%= link_to 'Show', my_todo_path(todoitem) %></td>
                 <td><%= link_to 'Edit', edit_my_todo_path(todoitem) %></td>
-                <td><%= link_to 'Delete', my_todo_path(todoitem), method: :delete, data: { confirm: 'Are you sure?'} %></td>
+                <td><%= link_to 'Delete', my_todo_path(todoitem), class: :deleteitem, method: :delete, data: { remote: true, confirm: 'Are you sure?'} %></td>
             </tr>
         <% end %>
     </tbody>
 </table>
 
-<%= link_to 'New Todo item', new_my_todo_path %>
+<%= link_to 'New Todo item (non-AJAX)', new_my_todo_path %>
 
 <script></script>
