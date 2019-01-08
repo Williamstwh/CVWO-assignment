@@ -1,0 +1,7 @@
+<%= form_with(url: my_todos_path, scope: :todo, id: :miniform, remote: true) do |form|%>
+    <h6>Enter new todo item (AJAX)</h6>
+    <%= form.text_field :title, placeholder: "  Title" %>
+    <%= form.text_field :description, placeholder: "  Description" %>
+    <%= form.datetime_select :due, default: 0.days.ago.localtime %>
+    <%= form.submit "create"%>
+<% end %>
