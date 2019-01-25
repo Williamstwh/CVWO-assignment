@@ -1,15 +1,17 @@
-<h1>My account</h1>
+<div class="jumbotron text-center">
+    <h1 class="display-4">My account</h1>
+    <hr />
+    <h5>Name:</h5>
+    <p><%= @account.name %></p>
 
-<h5>Name:</h5>
-<p><%= @account.name %></p>
+    <h5>Email:</h5>
+    <p><%= @account.email %></p>
 
-<h5>Email:</h5>
-<p><%= @account.email %></p>
+    <h5>Password:</h5>
+    <p><%= @account.password %></p>
 
-<h5>Password:</h5>
-<p><%= @account.password %></p>
+    <h5>Admin:</h5>
+    <p><%= @account.admin %></p>
 
-<h5>Admin:</h5>
-<p><%= @account.admin %></p>
-
-<%= link_to "edit details", edit_my_account_path %>
+    <%= link_to "edit details", edit_my_account_path %>
+</div>

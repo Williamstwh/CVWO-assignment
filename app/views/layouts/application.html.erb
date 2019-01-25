@@ -4,25 +4,36 @@
     <title>TodoList</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-      <div id="navibar">
-          <% if current_user.present? %>
-              <% if current_user.admin? %>
-                  <%= link_to 'Index', admin_users_path %>
-              <% end %>
-              <%= link_to 'Todo-List', my_todos_path %>
-              <%= link_to 'Account', my_account_path %>
-              <%= link_to 'Logout', session_path, method: :delete %>
-          <% else %>
-              <%= link_to 'Login', new_session_path %>
-          <% end %>
-  </div>
-    <%= notice %>
-    <%= yield %>
+      <nav class="navbar navbar-expand-sm bg-info navbar-dark bg-inverse justify-content-end">
+          <div class="container">
+              <button class="navbar-toggler" data-toggle="collapse" data-target="#mainNav">
+                  <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="mainNav">
+                  <div class="navbar-nav">
+                      <% if current_user.present? %>
+                          <% if current_user.admin? %>
+                              <%= link_to 'Index', admin_users_path, class: "nav-item nav-link" %>
+                          <% end %>
+                          <%= link_to 'Todo-List', my_todos_path, class: "nav-item nav-link" %>
+                          <%= link_to 'Account', my_account_path, class: "nav-item nav-link" %>
+                          <%= link_to 'Logout', session_path, method: :delete, class: "nav-item nav-link" %>
+                      <% else %>
+                          <%= link_to 'Login', new_session_path %>
+                      <% end %>
+                  </div>
+              </div>
+          </div>
+      </nav>
+
+      <%= notice %>
+      <%= yield %>
   </body>
 </html>
