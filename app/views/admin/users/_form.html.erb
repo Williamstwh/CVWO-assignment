@@ -11,20 +11,28 @@
       </div>
     <% end %>
 
+    <hr/>
+
     <div>
         <%= form.label :name %>
         <%= form.text_field :name %>
     </div>
+
+    <br/>
 
     <div>
         <%= form.label :email %>
         <%= form.text_field :email %>
     </div>
 
+    <br/>
+
     <div>
         <%= form.label :password %>
         <%= form.password_field :password %>
     </div>
+
+    <br/>
 
     <h5> Test feature (Admin): </h5>
     <div>
@@ -32,8 +40,10 @@
         <%= form.select :admin, [true, false], include_blank: '---Please Choose one---' %>
     </div>
 
+    <br/>
+
     <div>
-        <%= form.submit "Create user"  %>
+        <%= form.submit "Create user", class: "btn btn-primary"  %>
     </div>
 
 <% end %>

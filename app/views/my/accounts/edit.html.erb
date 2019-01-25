@@ -1,4 +1,7 @@
-<h1>Edit my account</h1>
+<div class="jumbotron text-center">
+    <h1 class="display-4">Edit my account</h1>
+
+    <hr/>
 
 <%# @account = current_user based on accounts controller%>
 <%# By default, since @account is a user, the fields of form will be passed as "user"=>{"name"=>..., "email"=>..., ...}.
@@ -7,43 +10,53 @@
     Thus, we must set the model and url separately, as 'model: @account' and 'url: [:my, :account]' which translates to
     my_account_path %>
 <%# by default, remote is true, hence  set local to true instead %>
-<%= form_with(model: @account, scope: :account, url: [:my, :account],local: true) do |form| %>
-    <% if @account.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-        <ul>
-        <% @account.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
+    <%= form_with(model: @account, scope: :account, url: [:my, :account],local: true) do |form| %>
+        <% if @account.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+            <ul>
+            <% @account.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+            </ul>
+          </div>
         <% end %>
-        </ul>
-      </div>
+
+        <div>
+            <%= form.label :name %>
+            <%= form.text_field :name %>
+        </div>
+
+        <br/>
+
+        <div>
+            <%= form.label :email %>
+            <%= form.text_field :email %>
+        </div>
+
+        <br/>
+
+        <div>
+            <%= form.label :password %>
+            <%= form.password_field :password %>
+        </div>
+
+        <br/>
+
+        <h5> Test feature (Admin): </h5>
+        <div>
+            <%= form.label :admin %>
+            <%= form.select :admin, [true, false], include_blank: '---Please Choose one---' %>
+        </div>
+
+        <br/>
+
+        <div>
+            <%# Disable button after click to prevent sending multiple requests %>
+            <%= form.submit "edit user", data: { disable_with: "submitting changes" }, class:"btn btn-primary" %>
+        </div>
+
     <% end %>
-
-    <div>
-        <%= form.label :name %>
-        <%= form.text_field :name %>
-    </div>
-
-    <div>
-        <%= form.label :email %>
-        <%= form.text_field :email %>
-    </div>
-
-    <div>
-        <%= form.label :password %>
-        <%= form.password_field :password %>
-    </div>
-
-    <h5> Test feature (Admin): </h5>
-    <div>
-        <%= form.label :admin %>
-        <%= form.select :admin, [true, false], include_blank: '---Please Choose one---' %>
-    </div>
-
-    <div>
-        <%# Disable button after click to prevent sending multiple requests %>
-        <%= form.submit "edit user", data: { disable_with: "submitting changes" } %>
-    </div>
-
-<% end %>
+</div>

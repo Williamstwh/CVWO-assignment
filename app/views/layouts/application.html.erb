@@ -26,14 +26,16 @@
                           <%= link_to 'Account', my_account_path, class: "nav-item nav-link" %>
                           <%= link_to 'Logout', session_path, method: :delete, class: "nav-item nav-link" %>
                       <% else %>
-                          <%= link_to 'Login', new_session_path %>
+                          <%= link_to 'Login', new_session_path, class: "nav-item nav-link" %>
                       <% end %>
                   </div>
               </div>
           </div>
       </nav>
 
-      <%= notice %>
+      <% unless notice.blank? %>
+        <div class="alert alert-danger text-center"><%= notice %></div>
+      <% end %>
       <%= yield %>
   </body>
 </html>

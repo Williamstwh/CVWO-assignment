@@ -9,7 +9,7 @@
                 <tr>
                     <%# Set default value of checkbox to checked %>
                     <td><h6>Include title</h6> <%= form.check_box :include_search, { checked: true } %></td>
-                    <td id="searchbar"colspan="3"> <%= form.text_field :search, placeholder: "title search" %> </td>
+                    <td id="searchbar"colspan="3"> <%= form.text_field :search, placeholder: "title search", class: "form-control" %> </td>
                 </tr>
                 <tr>
                     <td><h6>Include date range</h6><%= form.check_box :include_datetime %></td>

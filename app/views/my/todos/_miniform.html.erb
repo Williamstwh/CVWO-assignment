@@ -3,5 +3,5 @@
     <%= form.text_field :title, placeholder: "  Title" %>
     <%= form.text_field :description, placeholder: "  Description" %>
     <%= form.datetime_select :due, default: 0.days.ago.localtime %>
-    <%= form.submit "create"%>
+    <%= form.submit "create", class:"btn btn-primary"%>
 <% end %>

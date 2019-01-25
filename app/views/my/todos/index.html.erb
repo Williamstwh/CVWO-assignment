@@ -1,39 +1,44 @@
-<h1>Your Todo list</h1>
+<div class="jumbotron text-center">
+    <h1 class="display-4">Your Todo list</h1>
 
-<%= render 'search' %>
+    <%= render 'search' %>
 
-<hr/>
+    <hr/>
 
-<%= render 'miniform' %>
+    <%= render 'miniform' %>
 
-<hr/>
+    <hr/>
 
-<table class="contentTable">
-    <thead>
-        <tr>
-            <th>Title</th>
-            <th>Description</th>
-            <th>Deadline</th>
-            <th></th>
-            <th></th>
-            <th></th>
-        </tr>
-    </thead>
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th class="bg-info">Title</th>
+                    <th class="bg-info">Description</th>
+                    <th class="bg-info">Deadline</th>
+                    <th class="bg-info"></th>
+                    <th class="bg-info"></th>
+                    <th class="bg-info"></th>
+                </tr>
+            </thead>
 
-    <tbody>
-        <% @todos.each do |todoitem| %>
-            <tr>
-                <td><%= todoitem.title %></td>
-                <td><%= todoitem.description %></td>
-                <td><%= todoitem.due.to_formatted_s(:long_ordinal) %></td>
-                <td><%= link_to 'Show', my_todo_path(todoitem) %></td>
-                <td><%= link_to 'Edit', edit_my_todo_path(todoitem) %></td>
-                <td><%= link_to 'Delete', my_todo_path(todoitem), class: :deleteitem, method: :delete, data: { remote: true, confirm: 'Are you sure?'} %></td>
-            </tr>
-        <% end %>
-    </tbody>
-</table>
+            <tbody>
+                <% @todos.each do |todoitem| %>
+                    <tr>
+                        <td><%= todoitem.title %></td>
+                        <td><%= todoitem.description %></td>
+                        <td><%= todoitem.due.to_formatted_s(:long_ordinal) %></td>
+                        <td><%= link_to 'Show', my_todo_path(todoitem) %></td>
+                        <td><%= link_to 'Edit', edit_my_todo_path(todoitem) %></td>
+                        <td><%= link_to 'Delete', my_todo_path(todoitem), class: :deleteitem, method: :delete, data: { remote: true, confirm: 'Are you sure?'} %></td>
+                    </tr>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
 
-<%= link_to 'New Todo item (non-AJAX)', new_my_todo_path %>
+    <br />
 
-<script></script>
+    <button class="btn btn-primary"> <%= link_to 'New Todo item (non-AJAX)', new_my_todo_path, class: "text-white" %> </button>
+
+</div>

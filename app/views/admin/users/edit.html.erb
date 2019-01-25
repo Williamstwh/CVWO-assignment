@@ -1,5 +1,7 @@
-<h1>Edit <%= @user.name %>'s Profile</h1>
+<div class="jumbotron text-center">
+    <h1 class="display-4">Edit <%= @user.name %>'s Profile</h1>
 
-<%= render 'form', user: @user %>
+    <%= render 'form', user: @user %>
 
-<%= link_to "Back to index", admin_users_path %>
+    <%= link_to "Back to index", admin_users_path %>
+</div>

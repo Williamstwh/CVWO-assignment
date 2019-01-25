@@ -1,17 +1,17 @@
 <div class="jumbotron text-center">
     <h1 class="display-4">List of all users</h1>
 
-    <div style="align-content: center; margin: auto; text-align: center;">
-        <table class="contentTable">
+    <div class="table-responsive">
+        <table class="table table-striped table-hover" style="margin: auto;">
             <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Password</th>
-                    <th>Admin?</th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
+                    <th scope="col" class="bg-info">Name</th>
+                    <th scope="col" class="bg-info">Email</th>
+                    <th scope="col" class="bg-info">Password</th>
+                    <th scope="col" class="bg-info">Admin?</th>
+                    <th scope="col" class="bg-info"></th>
+                    <th scope="col" class="bg-info"></th>
+                    <th scope="col" class="bg-info"></th>
                 </tr>
             </thead>
 
@@ -37,5 +37,7 @@
         </table>
     </div>
 
-    <button><%= link_to "Create new user", new_admin_user_path %></button>
+    <br />
+
+    <button class="btn btn-primary"><%= link_to "Create new user", new_admin_user_path, class: "text-white" %></button>
 </div>

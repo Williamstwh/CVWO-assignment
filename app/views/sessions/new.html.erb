@@ -1,20 +1,26 @@
-<h1>Please login</h1>
+<div class="jumbotron text-center">
+    <h1 class="display-4">Please login</h1>
 
-<%= form_with url: session_path, local: true do |form| %>
-    <div class="field">
-        <%= form.label :email %>
-        <%= form.text_field :email, id: :email_value, value: params[:email] %>
-    </div>
+    <hr/>
 
-    <div class="field">
-        <%= form.label :password %>
-        <%= form.password_field :password, id: :password_value %>
-    </div>
+    <%= form_with url: session_path, local: true do |form| %>
+        <div class="field">
+            <%= form.label :email %>
+            <%= form.text_field :email, id: :email_value, value: params[:email] %>
+        </div>
 
-    <div class="actions">
-        <%# Disable button after click to prevent sending multiple requests %>
-        <%= form.submit 'Login', data: { disable_with: "Logging in..." } %>
-    </div>
-<% end %>
+        <div class="field">
+            <%= form.label :password %>
+            <%= form.password_field :password, id: :password_value %>
+        </div>
 
-<%= link_to "Create new account", new_user_path %>
+        <br/>
+
+        <div class="actions">
+            <%# Disable button after click to prevent sending multiple requests %>
+            <%= form.submit 'Login', data: { disable_with: "Logging in..." }, class: "btn btn-primary" %>
+        </div>
+    <% end %>
+
+    <%= link_to "Create new account", new_user_path %>
+</div>

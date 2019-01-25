@@ -13,23 +13,29 @@
     <% end %>
 
     <div>
-        <%= form.label :title %>
-        <%= form.text_field :title %>
+        <h5> Title </h5>
+        <%= form.text_field :title, class: "form-control" %>
     </div>
 
+    <br/>
+
     <div>
-        <%= form.label :description %>
-        <%= form.text_area :description %>
+        <h5> Description </h5>
+        <%= form.text_area :description, class: "form-control" %>
     </div>
+
+    <br/>
 
     <div>
         <%= form.label :due %>
         <%= form.datetime_select :due, default: 0.days.ago.localtime %>
     </div>
 
+    <br/>
+
     <div>
         <%# Disable button after click to prevent sending multiple requests %>
-        <%= form.submit "submit", data: { disable_with: "submitting data..." } %>
+        <%= form.submit "submit", data: { disable_with: "submitting data..." }, class:"btn btn-primary" %>
     </div>
 
 <% end %>
