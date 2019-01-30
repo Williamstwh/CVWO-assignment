@@ -5,8 +5,10 @@ class SessionsController < ApplicationController
     end
 
     def create
+        paras = session_params
+        paras[:email].downcase!
         #if the email and password entered matches any user, store it in the user
-        user = User.find_by(session_params)
+        user = User.find_by(paras)
         if user.present?
             #save the user's id into the session's id
             session[:current_user_id] = user.id
